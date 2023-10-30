@@ -6,11 +6,21 @@ const botonCambiar=document.getElementById("btnC");
 const botonSalir=document.getElementById("btnS");
 let saldoInicial=1000, saldoActual, intentos=3;
 const PIN_CORRECTO="1234";
+document.getElementById("saldo").textContent=saldoInicial+"€";
 
-
-botonDepositar.addEventListener("click", ()=>{
-
-})
+const depositar= ()=> {
+    const cantidad=parseFloat(prompt("Inserte la cantidad a depositar"))
+    if (isNaN(cantidad) || cantidad<=0) {
+        alert ("Inserte una cantidad valida")
+    }
+    else {
+        saldoActual=saldoInicial+cantidad;
+        saldoInicial=saldoActual
+        alert(`Se han depositado ${cantidad}€`)
+        document.getElementById("saldo").textContent=saldoActual+"€";
+    }
+}
+botonDepositar.addEventListener("click", depositar)
 
 botonRetirar.addEventListener("click", ()=>{
 
