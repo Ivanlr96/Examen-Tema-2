@@ -22,6 +22,8 @@ font-size: 1em
 .btn {
     margin-top: 2%;
     padding: 1em;
+    border: none;
+    border-radius: 0.5rem;
 }
 
 p {
