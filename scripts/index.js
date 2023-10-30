@@ -5,7 +5,11 @@ const botonTransferir=document.getElementById("btnT");
 const botonCambiar=document.getElementById("btnC");
 const botonSalir=document.getElementById("btnS");
 let saldoInicial=1000, saldoActual, intentos=3, PIN_CORRECTO="1234";
-document.getElementById("saldo").textContent=saldoInicial+"€";
+
+
+const mostrarSaldo=()=> {
+    document.getElementById("saldo").textContent=saldoInicial+"€";
+}
 
 const iniciarSesion=()=> {
     const pin=prompt("Inserte el pin")
@@ -16,6 +20,7 @@ const iniciarSesion=()=> {
     }
     if (pin===PIN_CORRECTO) {
         alert("Inicio de sesión exitoso, bienvenido")
+        mostrarSaldo()
     }
     else {
         window.location.replace("templates/bloqueado.html")
@@ -31,7 +36,7 @@ const depositar= ()=> {
         saldoActual=saldoInicial+cantidad;
         saldoInicial=saldoActual
         alert(`Se han depositado ${cantidad}€`)
-        document.getElementById("saldo").textContent=saldoActual+"€";
+        mostrarSaldo()
     }
 }
 const retirar=()=>{
@@ -43,7 +48,7 @@ const retirar=()=>{
         saldoActual=saldoInicial-cantidad;
         saldoInicial=saldoActual
         alert(`Se han retirado ${cantidad}€`)
-        document.getElementById("saldo").textContent=saldoActual+"€";
+        mostrarSaldo()
     }
 }
 
@@ -54,7 +59,9 @@ const cambiarContrasena=()=> {
         const pin=prompt("Inserte su pin actual")
     }
     else if (pin===PIN_CORRECTO) {
-        const PIN_CORRECTO=prompt("Inserte la nueva contraseña")
+         PIN_CORRECTO=prompt("Inserte la nueva contraseña")
+    
+        alert("Se ha cambiado la contraseña")
     }
 }
 botonDepositar.addEventListener("click", depositar)
