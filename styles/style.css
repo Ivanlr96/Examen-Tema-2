@@ -1,4 +1,5 @@
 
+
 body {
 background-color: bisque;
 text-align: center;
@@ -8,7 +9,7 @@ font-size: 1em
 .container {
     background: blue;
     height: 500px;
-    width: 500px;
+    width: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,4 +21,10 @@ font-size: 1em
 
 .btn {
     margin-top: 2%;
+    padding: 1em;
+}
+
+p {
+    font-size: 25px;
+    font-weight: 600;
 }
