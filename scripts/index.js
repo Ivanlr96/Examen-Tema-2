@@ -69,6 +69,7 @@ botonTransferir.addEventListener("click", ()=>{
 botonCambiar.addEventListener("click", cambiarContrasena)
 
 botonSalir.addEventListener("click", ()=>{
+    window.location.replace("templates/salir.html")
 
 })
 
