@@ -51,6 +51,26 @@ const retirar=()=>{
         mostrarSaldo()
     }
 }
+const transferir=()=> {
+    const cantidad=parseFloat(prompt("Inserte la cantidad a transferir"))
+    if (isNaN(cantidad) || cantidad<=0 || cantidad>saldoInicial) {
+        alert ("Inserte una cantidad valida")
+    }
+    else {
+            const cuenta=prompt("Inserte el número de la cuenta destino")
+            let expresionRegular=/^(ES\d{5}$)/;
+            if (cuenta.test!=expresionRegular) {
+                alert("La cuenta no es válida")
+                return;
+            }
+            else {
+                saldoActual=saldoInicial-cantidad;
+                saldoInicial=saldoActual
+                alert(`Se han transferido ${cantidad}€ a la cuenta ${cuenta}`)
+                mostrarSaldo()
+            }
+    }
+}
 
 const cambiarContrasena=()=> {
     const pin=prompt("Inserte su pin actual")
@@ -69,13 +89,12 @@ botonDepositar.addEventListener("click", depositar)
 botonRetirar.addEventListener("click", retirar)
 
 
-botonTransferir.addEventListener("click", ()=>{
-
-})
+botonTransferir.addEventListener("click", transferir)
 
 botonCambiar.addEventListener("click", cambiarContrasena)
 
 botonSalir.addEventListener("click", ()=>{
+    alert("Gracias por utilizar el cajero, hasta la próxima")
     window.location.replace("templates/salir.html")
 
 })
