@@ -23,9 +23,11 @@ const iniciarSesion=()=> {
         mostrarSaldo()
     }
     else {
+     alert("Se ha quedado sin intentos, el cajero ha sido bloqueado")
         window.location.replace("templates/bloqueado.html")
     }
 }
+
 
 const depositar= ()=> {
     const cantidad=parseFloat(prompt("Inserte la cantidad a depositar"))
@@ -51,6 +53,11 @@ const retirar=()=>{
         mostrarSaldo()
     }
 }
+
+const validarIban=(iban)=> {
+ let expresionRegular=/^(ES\d{22}$)/;
+  return expresionRegular.test(iban);
+}
 const transferir=()=> {
     const cantidad=parseFloat(prompt("Inserte la cantidad a transferir"))
     if (isNaN(cantidad) || cantidad<=0 || cantidad>saldoInicial) {
@@ -58,8 +65,8 @@ const transferir=()=> {
     }
     else {
             const cuenta=prompt("Inserte el número de la cuenta destino")
-            let expresionRegular=/^(ES\d{5}$)/;
-            if (cuenta.test!=expresionRegular) {
+
+            if (!validarIban(cuenta)) {
                 alert("La cuenta no es válida")
                 return;
             }
@@ -80,7 +87,6 @@ const cambiarContrasena=()=> {
     }
     else if (pin===PIN_CORRECTO) {
          PIN_CORRECTO=prompt("Inserte la nueva contraseña")
-    
         alert("Se ha cambiado la contraseña")
     }
 }
